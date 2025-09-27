@@ -16,15 +16,17 @@
 # strs[i] contains only UTF-8 characters.
 
 
-def encode(strs: list[str]) -> str:
-    encoded_str = ""
-    for word in strs:
-        encoded_str += f"{len(word)}#{word}"
-    return encoded_str
-
+import timeit
 
 # mỗi từ sẽ được encode thành: "chiều dài của từ + '#' + từ"
 # ví dụ "we" -> "2#we", "say" -> "3#say"
+# edit: thay vì dùng "" += thì dùng join sẽ tối ưu hơn
+def encode(strs: list[str]) -> str:
+    encoded_list = []
+    for word in strs:
+        encoded_list.append(f"{len(word)}#{word}")
+    return ''.join(encoded_list)
+
 
 
 def decode(s: str) -> list[str]:
@@ -43,7 +45,7 @@ def decode(s: str) -> list[str]:
 
         # lấy từ
         word = s[start:end]
-        
+
         decoded_list.append(word)
         i = end
     return decoded_list
