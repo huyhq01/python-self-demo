@@ -33,21 +33,24 @@ def decode(s: str) -> list[str]:
     i = 0
     decoded_list = []
     while i < len(s):
+        # tìm ví trí của kí tự '#'
+        j = s.find('#', i)
+
         # chiều dài của từ
-        word_length = s[i : s.find("#", i)] 
-        # tìm ví trí của kí tự '#' vì chiều dài của từ có thể là vài chục, trăm
+        word_length = int(s[i : j])
         
-        # ví trí chữ cái đầu tiên của từ
-        start = i + 1 + len(word_length)
+        # ví trí chữ cái đầu tiên của từ, ngay sau dấu #
+        start = j + 1
 
         # vị trí của kí tự cuối cùng của từ + 1 => tìm vị trí độ dài từ tiếp theo
-        end = start + int(word_length)
+        end = start + word_length
 
         # lấy từ
         word = s[start:end]
 
         decoded_list.append(word)
         i = end
+        # có thể đưa i lên end cho gọn
     return decoded_list
 
 
