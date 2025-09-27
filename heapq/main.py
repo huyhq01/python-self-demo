@@ -20,4 +20,4 @@ heapq.heapify(num)
 #
 for i in range(len(num)):
     print(heapq.heappop(num))
-# now the list output is ordered
+# lấy node nhỏ nhất, tức node root = trên cùng -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
